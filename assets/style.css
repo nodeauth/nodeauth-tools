@@ -231,7 +231,49 @@ code {
 
 footer {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
+    padding-bottom: 40px;
+}
+
+footer p {
     color: var(--text-dim);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    position: relative;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--text-main);
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+footer .sep {
+    color: var(--glass-border);
+    font-weight: 300;
+    user-select: none;
 }

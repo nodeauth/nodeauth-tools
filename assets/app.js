@@ -4,6 +4,7 @@ const ITERATIONS = 100000;
 // I18n Dictionary
 const i18n = {
     zh: {
+        page_title: "NodeAuth Worker 部署辅助工具",
         lang_btn: "English",
         header_sub: "部署辅助工具",
         t1_title: "🎲 随机密钥生成",
@@ -11,14 +12,14 @@ const i18n = {
         t1_label: "生成的安全字符串 (64位)：",
         btn_regenerate: "重新生成",
         t2_title: "📦 Base64 编码",
-        t2_subtitle: "将环境变量包装为 base64: 前缀格式。",
+        t2_subtitle: "将环境变量编码为 base64: 前缀格式。",
         t2_label: "输入原始变量：",
         t2_ph: "输入环境变量",
         t2_out_label: "编码输出：",
         t_hex_title: "🔡 Hex 编码",
-        t_hex_subtitle: "将敏感值转换为十六进制 hex: 格式。",
+        t_hex_subtitle: "将敏感值编码为十六进制 hex: 前缀格式。",
         t3_title: "🔐 AES 批量加密",
-        t3_subtitle: "支持多行 KEY=VALUE 解析。浏览器本地并行计算。",
+        t3_subtitle: "将敏感值编码为 aes: 前缀格式。",
         t3_secret_label: "根密钥 (明文 JWT_SECRET)：",
         t3_secret_ph: "填入刚才生成的 64 位密钥...",
         t3_target_label: "待加密环境变量 (支持多行、KEY=VALUE 格式)：",
@@ -26,15 +27,16 @@ const i18n = {
         t3_out_label: "AES 加密输出 (aes:iv:tag:cipher)：",
         ready_status: "准备就绪",
         btn_encrypt: "执行加密",
-        footer_note: "私密本地计算 · 极致安全保障",
+        footer_note: "wiki.nodeauth.io | license.nodeauth.io",
         err_missing: "❌ 请提供 JWT_SECRET 和 待加密值",
-        t3_license_label: "授权码 (NODEAUTH_LICENSE - 选填)：",
-        t3_license_ph: "填入您的授权码，以启用逻辑锁。若不填则使用默认盐值。",
+        t3_license_label: "授权码 (明文 NODEAUTH_LICENSE)：",
+        t3_license_ph: "填入您的授权码...",
         status_derive: "⚡ 正在派生根密钥 (100k PBKDF2)...",
         status_encrypting: "🔨 正在解析并加密 {n} 个条目...",
         btn_copy_tips: "点击复制"
     },
     en: {
+        page_title: "NodeAuth Worker Deploy Helper",
         lang_btn: "简体中文",
         header_sub: "Deploy Helper",
         t1_title: "🎲 Random Secret Generator",
@@ -42,14 +44,14 @@ const i18n = {
         t1_label: "Generated Secure String (64-bit):",
         btn_regenerate: "Regenerate",
         t2_title: "📦 Base64 Encoder",
-        t2_subtitle: "Wraps variables into base64: prefix format.",
+        t2_subtitle: "Encodes variables into base64: prefix format.",
         t2_label: "Input Plaintext:",
         t2_ph: "Enter environment variable",
         t2_out_label: "Encoded Output:",
         t_hex_title: "🔡 Hex Encoding",
-        t_hex_subtitle: "Converts sensitive values into hex: format.",
+        t_hex_subtitle: "Encodes sensitive values into hex: prefix format.",
         t3_title: "🔐 Batch AES Encryptor",
-        t3_subtitle: "Supports KEY=VALUE parsing. Local calculation.",
+        t3_subtitle: "Encodes sensitive values into aes: prefix format.",
         t3_secret_label: "Root Key (Plaintext JWT_SECRET):",
         t3_secret_ph: "Enter the generated 64-bit secret...",
         t3_target_label: "Target Variables (Multi-line, KEY=VALUE supported):",
@@ -57,10 +59,10 @@ const i18n = {
         t3_out_label: "AES Output (aes:iv:tag:cipher):",
         ready_status: "Ready",
         btn_encrypt: "Encrypt Now",
-        footer_note: "Local Computation · Zero Data Transmission",
+        footer_note: "wiki.nodeauth.io | license.nodeauth.io",
         err_missing: "❌ Please provide JWT_SECRET and values",
-        t3_license_label: "License (NODEAUTH_LICENSE - Optional):",
-        t3_license_ph: "Enter your license to enable logic lock. Leave empty to use default salt.",
+        t3_license_label: "License (Plaintext NODEAUTH_LICENSE):",
+        t3_license_ph: "Enter your license...",
         status_derive: "⚡ Deriving root key (100k PBKDF2)...",
         status_encrypting: "🔨 Encrypting {n} items...",
         btn_copy_tips: "Click to copy"
@@ -76,6 +78,7 @@ function toggleLang() {
 
 function applyLang() {
     const dict = i18n[currentLang];
+    if (dict.page_title) document.title = dict.page_title;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) el.innerHTML = dict[key];
@@ -238,3 +241,4 @@ function copy(id) {
 initTheme();
 applyLang();
 generateRandom();
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
