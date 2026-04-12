@@ -1,0 +1,17 @@
+{
+    "name": "nodeauth-tools",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "wrangler dev",
+        "deploy": "wrangler deploy",
+        "cf-typegen": "wrangler types"
+    },
+    "dependencies": {
+        "hono": "^4.12.12"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20260411.1",
+        "wrangler": "^4.75.0"
+    }
+}

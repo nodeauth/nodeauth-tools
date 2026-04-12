@@ -1,0 +1,17 @@
+name = "nodeauth-tools"
+main = "src/index.ts"
+compatibility_date = "2026-03-17"
+
+workers_dev = false
+preview_urls = false
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[routes]]
+pattern = "tools.nodeauth.io/*"
+zone_name = "nodeauth.io"
+
+[observability]
+enabled = true
