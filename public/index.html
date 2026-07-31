@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">NodeAuth Worker Deploy Helper | 部署辅助工具</title>
+    <meta name="description" content="NodeAuth Worker Deploy Helper. Free online developer toolkit: Generate high-strength JWT secrets, encode Base64/Hex, and securely batch encrypt AES environment variables in the browser.">
+    <title data-i18n="page_title">NodeAuth Worker Deploy Helper</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="assets/style.css">
+    <!-- Google Fonts for typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -21,117 +26,339 @@
             stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12" />
         </symbol>
+        <symbol id="icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </symbol>
+        <symbol id="icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+        </symbol>
+        <symbol id="icon-random" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 3h5v5" />
+            <path d="M4 20L21 3" />
+            <path d="M21 16v5h-5" />
+            <path d="M15 15l6 6" />
+            <path d="M4 4l5 5" />
+        </symbol>
+        <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+        </symbol>
+        <symbol id="icon-hex" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        </symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </symbol>
+        <symbol id="icon-lang" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 8 6 6" />
+            <path d="m4 14 6-6 2-3" />
+            <path d="M2 5h12" />
+            <path d="M7 2h1" />
+            <path d="m22 22-5-10-5 10" />
+            <path d="m14 18 6 0" />
+        </symbol>
+        <symbol id="icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+        </symbol>
     </svg>
 
-    <!-- Theme & Language Switcher -->
-    <div class="theme-switcher">
-        <button onclick="toggleTheme()" id="theme-btn">☀️</button>
-    </div>
-    <div class="lang-switcher">
-        <button onclick="toggleLang()" id="lang-btn">简体中文</button>
-    </div>
-
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="assets/logo.svg" alt="NodeAuth Logo" class="logo">
+    <div id="app" class="dashboard">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="mobile-sidebar">
+            <div class="sidebar-header">
+                <div class="brand-group">
+                    <img src="assets/logo.svg" alt="NodeAuth Logo" class="logo">
+                    <div class="brand">
+                        <h2>NodeAuth</h2>
+                        <span data-i18n="header_sub" class="brand-sub">Deploy Helper</span>
+                    </div>
+                </div>
+                
+                <div class="theme-lang-controls">
+                    <button onclick="toggleTheme()" class="minimal-icon-btn theme-btn" title="Toggle Theme">
+                        <svg><use href="#icon-sun" /></svg>
+                    </button>
+                    <button onclick="toggleLang()" class="minimal-icon-btn lang-btn" data-i18n-title="lang_btn_title">
+                        <svg><use href="#icon-lang" /></svg>
+                    </button>
+                    <button class="minimal-icon-btn mobile-menu-btn mobile-only" onclick="toggleMobileMenu()">
+                        <svg><use href="#icon-menu" /></svg>
+                    </button>
+                </div>
             </div>
-            <h1 id="main-title">NodeAuth Worker <span data-i18n="header_sub">部署辅助工具</span></h1>
-        </header>
 
-        <main>
-            <!-- Card 1: Random String -->
-            <section class="tool-section">
-                <h2 data-i18n="t1_title">🎲 随机密钥生成</h2>
-                <div class="subtitle" data-i18n="t1_subtitle">用于生成 64 位强度的 JWT_SECRET 或 ENCRYPTION_KEY。</div>
-                <label data-i18n="t1_label">生成的安全字符串 (64位)：</label>
-                <div class="output-area">
-                    <code id="random-out"></code>
-                    <button class="btn-copy" onclick="copy('random-out')" data-i18n-title="btn_copy_tips">
-                        <svg>
-                            <use href="#icon-copy" />
-                        </svg>
-                    </button>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-target="random">
+                    <svg>
+                        <use href="#icon-random" />
+                    </svg>
+                    <span data-i18n="nav_random">Random Secret</span>
+                </button>
+                <button class="nav-item" data-target="base64">
+                    <svg>
+                        <use href="#icon-code" />
+                    </svg>
+                    <span data-i18n="nav_base64">Base64 Encoder</span>
+                </button>
+                <button class="nav-item" data-target="hex">
+                    <svg>
+                        <use href="#icon-hex" />
+                    </svg>
+                    <span data-i18n="nav_hex">Hex Encoder</span>
+                </button>
+                <button class="nav-item" data-target="aes">
+                    <svg>
+                        <use href="#icon-lock" />
+                    </svg>
+                    <span data-i18n="nav_aes">AES Batch Encryptor</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <h3 class="footer-heading">NodeAuth Links</h3>
+                    <a href="https://nodeauth.io" data-i18n-href="url_website" target="_blank" class="footer-link">
+                        <span data-i18n="link_website">Official Website</span>
+                        <svg><use href="#icon-external" /></svg>
+                    </a>
+                    <a href="https://demo.nodeauth.io" target="_blank" class="footer-link">
+                        <span data-i18n="link_demo">Online Demo</span>
+                        <svg><use href="#icon-external" /></svg>
+                    </a>
+                    <a href="https://license.nodeauth.io" target="_blank" class="footer-link">
+                        <span data-i18n="link_license">License Center</span>
+                        <svg><use href="#icon-external" /></svg>
+                    </a>
+                    <a href="https://wiki.nodeauth.io" data-i18n-href="url_wiki" target="_blank" class="footer-link">
+                        <span data-i18n="link_wiki">Wiki Docs</span>
+                        <svg><use href="#icon-external" /></svg>
+                    </a>
+                    <a href="https://tools.nodeauth.io" target="_blank" class="footer-link">
+                        <span data-i18n="link_tools">Tools</span>
+                        <svg><use href="#icon-external" /></svg>
+                    </a>
                 </div>
-                <button class="btn-action" onclick="generateRandom()" data-i18n="btn_regenerate">重新生成</button>
+
+                <div class="footer-copyright">
+                    © <span class="copyright-year"></span> NodeAuth. All rights reserved.
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+
+            <!-- Tool: Random Secret -->
+            <section id="tool-random" class="tool-section active-tool">
+                <div class="section-header">
+                    <h1 class="title-with-icon">
+                        <svg>
+                            <use href="#icon-random" />
+                        </svg>
+                        <span data-i18n="t1_title">Random Secret Generator</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="t1_subtitle">Generate high-strength JWT_SECRET or ENCRYPTION_KEY.</p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="form-group row">
+                        <label data-i18n="t1_length">Key Length:</label>
+                        <select id="random-length" class="custom-select" onchange="generateRandom()">
+                            <option value="32">32 字符 (256-bit)</option>
+                            <option value="64" selected>64 字符 (512-bit)</option>
+                            <option value="128">128 字符 (1024-bit)</option>
+                        </select>
+                    </div>
+
+                    <label data-i18n="t1_label" class="mt-4">Generated Secure String:</label>
+                    <div class="output-area large-output">
+                        <code id="random-out"></code>
+                        <button class="btn-copy" onclick="copy('random-out')" data-i18n-title="btn_copy_tips">
+                            <svg>
+                                <use href="#icon-copy" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn-action primary" onclick="generateRandom()" data-i18n="btn_regenerate">Regenerate</button>
+                    </div>
+                </div>
             </section>
 
-            <!-- Card 2: Base64 -->
-            <section class="tool-section">
-                <h2 data-i18n="t2_title">📦 Base64 编码</h2>
-                <div class="subtitle" data-i18n="t2_subtitle">将环境变量包装为 base64: 前缀格式。</div>
-                <label data-i18n="t2_label">输入原始变量：</label>
-                <input type="text" id="b64-in" data-placeholder="t2_ph" oninput="encodeBase64()">
-                <label data-i18n="t2_out_label">编码输出：</label>
-                <div class="output-area">
-                    <code id="b64-out"></code>
-                    <button class="btn-copy" onclick="copy('b64-out')" data-i18n-title="btn_copy_tips">
+            <!-- Tool: Base64 -->
+            <section id="tool-base64" class="tool-section">
+                <div class="section-header">
+                    <h1 class="title-with-icon">
                         <svg>
-                            <use href="#icon-copy" />
+                            <use href="#icon-code" />
                         </svg>
-                    </button>
+                        <span data-i18n="t2_title">Base64 Encoder</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="t2_subtitle">Encodes variables into base64: prefix format.</p>
+                </div>
+
+                <div class="glass-card split-layout">
+                    <div class="split-pane">
+                        <label for="b64-in" data-i18n="t2_label">Input Plaintext:</label>
+                        <textarea id="b64-in" class="editor-textarea" data-placeholder="t2_ph" placeholder="Enter environment variable..." oninput="encodeBase64()"></textarea>
+                    </div>
+                    <div class="split-pane">
+                        <label data-i18n="t2_out_label">Encoded Output:</label>
+                        <div class="output-area editor-output">
+                            <code id="b64-out"></code>
+                            <button class="btn-copy" onclick="copy('b64-out')" data-i18n-title="btn_copy_tips">
+                                <svg>
+                                    <use href="#icon-copy" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Card 2.5: Hex -->
-            <section class="tool-section">
-                <h2 data-i18n="t_hex_title">🔡 Hex 编码</h2>
-                <div class="subtitle" data-i18n="t_hex_subtitle">将敏感值转换为十六进制 hex: 格式。</div>
-                <label data-i18n="t2_label">输入原始变量：</label>
-                <input type="text" id="hex-in" data-placeholder="t2_ph" oninput="encodeHex()">
-                <label data-i18n="t2_out_label">编码输出：</label>
-                <div class="output-area">
-                    <code id="hex-out"></code>
-                    <button class="btn-copy" onclick="copy('hex-out')" data-i18n-title="btn_copy_tips">
+            <!-- Tool: Hex -->
+            <section id="tool-hex" class="tool-section">
+                <div class="section-header">
+                    <h1 class="title-with-icon">
                         <svg>
-                            <use href="#icon-copy" />
+                            <use href="#icon-hex" />
                         </svg>
-                    </button>
+                        <span data-i18n="t_hex_title">Hex Encoder</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="t_hex_subtitle">Encodes sensitive values into hex: prefix format.</p>
+                </div>
+
+                <div class="glass-card split-layout">
+                    <div class="split-pane">
+                        <label for="hex-in" data-i18n="t2_label">Input Plaintext:</label>
+                        <textarea id="hex-in" class="editor-textarea" data-placeholder="t2_ph" placeholder="Enter environment variable..." oninput="encodeHex()"></textarea>
+                    </div>
+                    <div class="split-pane">
+                        <label data-i18n="t2_out_label">Encoded Output:</label>
+                        <div class="output-area editor-output">
+                            <code id="hex-out"></code>
+                            <button class="btn-copy" onclick="copy('hex-out')" data-i18n-title="btn_copy_tips">
+                                <svg>
+                                    <use href="#icon-copy" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Card 3: AES -->
-            <section class="tool-section">
-                <h2 data-i18n="t3_title">🔐 AES 批量加密</h2>
-                <div class="subtitle" data-i18n="t3_subtitle">支持多行 KEY=VALUE 解析。浏览器本地并行计算。</div>
-                <label data-i18n="t3_secret_label">根密钥 (明文 JWT_SECRET)：</label>
-                <input type="text" id="aes-secret" data-placeholder="t3_secret_ph">
-
-                <label data-i18n="t3_license_label">授权码 (NODEAUTH_LICENSE)：</label>
-                <input type="text" id="aes-license" data-placeholder="t3_license_ph">
-
-                <label data-i18n="t3_target_label">待加密环境变量 (支持多行、KEY=VALUE 格式)：</label>
-                <textarea style="min-height: 150px;" id="aes-target" rows="3"
-                    data-placeholder="t3_target_ph"></textarea>
-
-                <label data-i18n="t3_out_label">AES 加密输出 (aes:iv:tag:cipher)：</label>
-                <div class="output-area" style="min-height: 150px; padding-top: 40px !important;">
-                    <pre id="aes-out" data-i18n="ready_status">准备就绪</pre>
-                    <button class="btn-copy" onclick="copy('aes-out')" data-i18n-title="btn_copy_tips">
+            <!-- Tool: AES -->
+            <section id="tool-aes" class="tool-section">
+                <div class="section-header">
+                    <h1 class="title-with-icon">
                         <svg>
-                            <use href="#icon-copy" />
+                            <use href="#icon-lock" />
                         </svg>
-                    </button>
+                        <span data-i18n="t3_title">AES Batch Encryptor</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="t3_subtitle">Browser-local batch encryption for KEY=VALUE envs.</p>
                 </div>
-                <button class="btn-action" onclick="encryptAES()" data-i18n="btn_encrypt">执行加密</button>
+
+                <div class="glass-card">
+                    <div class="input-grid">
+                        <div class="form-group">
+                            <label for="aes-secret" data-i18n="t3_secret_label">Root Key (Plaintext JWT_SECRET):</label>
+                            <input type="password" id="aes-secret" data-placeholder="t3_secret_ph" placeholder="Enter the generated secret...">
+                        </div>
+                        <div class="form-group">
+                            <label for="aes-license" data-i18n="t3_license_label">License (NODEAUTH_LICENSE):</label>
+                            <input type="password" id="aes-license" data-placeholder="t3_license_ph" placeholder="Enter your license..."
+                                onblur="saveLicense()">
+                            <small class="hint" data-i18n="t3_license_hint">Saved locally on blur</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <label for="aes-target" data-i18n="t3_target_label">Target Variables (Multi-line, KEY=VALUE supported):</label>
+                        <textarea id="aes-target" class="editor-textarea" rows="4"
+                            data-placeholder="t3_target_ph" placeholder="Example&#10;abc@example.com&#10;- OAUTH_GOOGLE_CLIENT_ID=357284972762-oogleusercontent.com"></textarea>
+                    </div>
+
+                    <div class="action-row align-left mt-4 mb-4">
+                        <button class="btn-action primary" id="btn-encrypt" onclick="encryptAES()">
+                            <span data-i18n="btn_encrypt">Encrypt Now</span>
+                        </button>
+                    </div>
+
+                    <label data-i18n="t3_out_label">AES Output (aes:iv:tag:cipher):</label>
+                    <div class="output-area editor-output">
+                        <pre id="aes-out"><span class="placeholder-text" data-i18n="ready_status">Ready</span></pre>
+                        <button class="btn-copy" onclick="copy('aes-out')" data-i18n-title="btn_copy_tips">
+                            <svg>
+                                <use href="#icon-copy" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </section>
+
+            <!-- Mobile Footer -->
+            <footer class="main-footer mobile-only">
+                <div class="links">
+                    <a href="https://nodeauth.io" data-i18n-href="url_website" target="_blank">
+                        <span data-i18n="link_website">Official Website</span>
+                    </a>
+                    <a href="https://demo.nodeauth.io" target="_blank">
+                        <span data-i18n="link_demo">Online Demo</span>
+                    </a>
+                    <a href="https://license.nodeauth.io" target="_blank">
+                        <span data-i18n="link_license">License Center</span>
+                    </a>
+                    <a href="https://wiki.nodeauth.io" data-i18n-href="url_wiki" target="_blank">
+                        <span data-i18n="link_wiki">Wiki Docs</span>
+                    </a>
+                    <a href="https://tools.nodeauth.io" target="_blank">
+                        <span data-i18n="link_tools">Tools</span>
+                    </a>
+                </div>
+                <div class="copyright">© <span class="copyright-year"></span> NodeAuth. All rights reserved.</div>
+            </footer>
         </main>
-
-        <footer>
-            <p>
-                <span>© <span id="copyright-year"></span>
-                    <a href="https://github.com/nodeauth/nodeauth-worker" target="_blank">NodeAuth Worker</a>
-                    <span class="sep">|</span>
-                    <a href="https://demo.nodeauth.io" target="_blank">Demo</a>
-                    <span class="sep">|</span>
-                    <a href="https://wiki.nodeauth.io" target="_blank">Wiki</a>
-                    <span class="sep">|</span>
-                    <a href="https://tools.nodeauth.io" target="_blank">Tools</a>
-                    <span class="sep">|</span>
-                    <a href="https://license.nodeauth.io" target="_blank">License</a>
-            </p>
-        </footer>
     </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
 
     <script src="assets/app.js"></script>
 </body>
