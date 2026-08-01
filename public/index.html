@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NodeAuth Worker Deploy Helper. Free online developer toolkit: Generate high-strength JWT secrets, encode Base64/Hex, and securely batch encrypt AES environment variables in the browser.">
+    <meta name="description"
+        content="NodeAuth Worker Deploy Helper. Free online developer toolkit: Generate high-strength JWT secrets, encode Base64/Hex, and securely batch encrypt AES environment variables in the browser.">
     <title data-i18n="page_title">NodeAuth Worker Deploy Helper</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="assets/style.css">
@@ -109,16 +110,22 @@
                         <span data-i18n="header_sub" class="brand-sub">Deploy Helper</span>
                     </div>
                 </div>
-                
+
                 <div class="theme-lang-controls">
                     <button onclick="toggleTheme()" class="minimal-icon-btn theme-btn" title="Toggle Theme">
-                        <svg><use href="#icon-sun" /></svg>
+                        <svg>
+                            <use href="#icon-sun" />
+                        </svg>
                     </button>
                     <button onclick="toggleLang()" class="minimal-icon-btn lang-btn" data-i18n-title="lang_btn_title">
-                        <svg><use href="#icon-lang" /></svg>
+                        <svg>
+                            <use href="#icon-lang" />
+                        </svg>
                     </button>
                     <button class="minimal-icon-btn mobile-menu-btn mobile-only" onclick="toggleMobileMenu()">
-                        <svg><use href="#icon-menu" /></svg>
+                        <svg>
+                            <use href="#icon-menu" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -153,25 +160,36 @@
             <div class="sidebar-footer">
                 <div class="footer-links">
                     <h3 class="footer-heading">NodeAuth Links</h3>
-                    <a href="https://nodeauth.io" data-i18n-href="url_website" target="_blank" class="footer-link">
-                        <span data-i18n="link_website">Official Website</span>
-                        <svg><use href="#icon-external" /></svg>
+                    <a href="https://www.nodeauth.io/cn/" data-i18n-href="url_website" target="_blank"
+                        class="footer-link">
+                        <span data-i18n="link_website">NodeAuth Home</span>
+                        <svg>
+                            <use href="#icon-external" />
+                        </svg>
                     </a>
                     <a href="https://demo.nodeauth.io" target="_blank" class="footer-link">
                         <span data-i18n="link_demo">Online Demo</span>
-                        <svg><use href="#icon-external" /></svg>
+                        <svg>
+                            <use href="#icon-external" />
+                        </svg>
                     </a>
                     <a href="https://license.nodeauth.io" target="_blank" class="footer-link">
                         <span data-i18n="link_license">License Center</span>
-                        <svg><use href="#icon-external" /></svg>
+                        <svg>
+                            <use href="#icon-external" />
+                        </svg>
                     </a>
                     <a href="https://wiki.nodeauth.io" data-i18n-href="url_wiki" target="_blank" class="footer-link">
                         <span data-i18n="link_wiki">Wiki Docs</span>
-                        <svg><use href="#icon-external" /></svg>
+                        <svg>
+                            <use href="#icon-external" />
+                        </svg>
                     </a>
                     <a href="https://tools.nodeauth.io" target="_blank" class="footer-link">
                         <span data-i18n="link_tools">Tools</span>
-                        <svg><use href="#icon-external" /></svg>
+                        <svg>
+                            <use href="#icon-external" />
+                        </svg>
                     </a>
                 </div>
 
@@ -216,7 +234,8 @@
                         </button>
                     </div>
                     <div class="action-row">
-                        <button class="btn-action primary" onclick="generateRandom()" data-i18n="btn_regenerate">Regenerate</button>
+                        <button class="btn-action primary" onclick="generateRandom()"
+                            data-i18n="btn_regenerate">Regenerate</button>
                     </div>
                 </div>
             </section>
@@ -236,7 +255,8 @@
                 <div class="glass-card split-layout">
                     <div class="split-pane">
                         <label for="b64-in" data-i18n="t2_label">Input Plaintext:</label>
-                        <textarea id="b64-in" class="editor-textarea" data-placeholder="t2_ph" placeholder="Enter environment variable..." oninput="encodeBase64()"></textarea>
+                        <textarea id="b64-in" class="editor-textarea" data-placeholder="t2_ph"
+                            placeholder="Enter environment variable..." oninput="encodeBase64()"></textarea>
                     </div>
                     <div class="split-pane">
                         <label data-i18n="t2_out_label">Encoded Output:</label>
@@ -267,7 +287,8 @@
                 <div class="glass-card split-layout">
                     <div class="split-pane">
                         <label for="hex-in" data-i18n="t2_label">Input Plaintext:</label>
-                        <textarea id="hex-in" class="editor-textarea" data-placeholder="t2_ph" placeholder="Enter environment variable..." oninput="encodeHex()"></textarea>
+                        <textarea id="hex-in" class="editor-textarea" data-placeholder="t2_ph"
+                            placeholder="Enter environment variable..." oninput="encodeHex()"></textarea>
                     </div>
                     <div class="split-pane">
                         <label data-i18n="t2_out_label">Encoded Output:</label>
@@ -299,20 +320,22 @@
                     <div class="input-grid">
                         <div class="form-group">
                             <label for="aes-secret" data-i18n="t3_secret_label">Root Key (Plaintext JWT_SECRET):</label>
-                            <input type="password" id="aes-secret" data-placeholder="t3_secret_ph" placeholder="Enter the generated secret...">
+                            <input type="password" id="aes-secret" data-placeholder="t3_secret_ph"
+                                placeholder="Enter the generated secret...">
                         </div>
                         <div class="form-group">
                             <label for="aes-license" data-i18n="t3_license_label">License (NODEAUTH_LICENSE):</label>
-                            <input type="password" id="aes-license" data-placeholder="t3_license_ph" placeholder="Enter your license..."
-                                onblur="saveLicense()">
+                            <input type="password" id="aes-license" data-placeholder="t3_license_ph"
+                                placeholder="Enter your license..." onblur="saveLicense()">
                             <small class="hint" data-i18n="t3_license_hint">Saved locally on blur</small>
                         </div>
                     </div>
 
                     <div class="form-group mt-4">
-                        <label for="aes-target" data-i18n="t3_target_label">Target Variables (Multi-line, KEY=VALUE supported):</label>
-                        <textarea id="aes-target" class="editor-textarea" rows="4"
-                            data-placeholder="t3_target_ph" placeholder="Example&#10;abc@example.com&#10;- OAUTH_GOOGLE_CLIENT_ID=357284972762-oogleusercontent.com"></textarea>
+                        <label for="aes-target" data-i18n="t3_target_label">Target Variables (Multi-line, KEY=VALUE
+                            supported):</label>
+                        <textarea id="aes-target" class="editor-textarea" rows="4" data-placeholder="t3_target_ph"
+                            placeholder="Example&#10;abc@example.com&#10;- OAUTH_GOOGLE_CLIENT_ID=357284972762-oogleusercontent.com"></textarea>
                     </div>
 
                     <div class="action-row align-left mt-4 mb-4">
@@ -336,8 +359,8 @@
             <!-- Mobile Footer -->
             <footer class="main-footer mobile-only">
                 <div class="links">
-                    <a href="https://nodeauth.io" data-i18n-href="url_website" target="_blank">
-                        <span data-i18n="link_website">Official Website</span>
+                    <a href="https://www.nodeauth.io/cn/" data-i18n-href="url_website" target="_blank">
+                        <span data-i18n="link_website">NodeAuth Home</span>
                     </a>
                     <a href="https://demo.nodeauth.io" target="_blank">
                         <span data-i18n="link_demo">Online Demo</span>
@@ -349,7 +372,7 @@
                         <span data-i18n="link_wiki">Wiki Docs</span>
                     </a>
                     <a href="https://tools.nodeauth.io" target="_blank">
-                        <span data-i18n="link_tools">Tools</span>
+                        <span data-i18n="link_tools">Deployment Tools</span>
                     </a>
                 </div>
                 <div class="copyright">© <span class="copyright-year"></span> NodeAuth. All rights reserved.</div>

@@ -42,13 +42,13 @@ const i18n = {
         toast_saved: "授权码已保存到本地",
         lang_btn_title: "Switch to English",
         theme_btn: "切换主题",
-        link_website: "官方网站",
+        link_website: "NodeAuth",
         link_demo: "在线演示",
         link_license: "授权中心",
         link_wiki: "Wiki文档",
         link_tools: "部署工具",
-        url_website: "https://nodeauth.io",
-        url_wiki: "https://wiki.nodeauth.io"
+        url_website: "https://www.nodeauth.io/cn/",
+        url_wiki: "https://wiki.nodeauth.io/cn/"
     },
     en: {
         page_title: "NodeAuth Worker Deploy Helper",
@@ -90,17 +90,17 @@ const i18n = {
         toast_saved: "License saved locally",
         lang_btn_title: "切换到中文",
         theme_btn: "Toggle Theme",
-        link_website: "Official Website",
+        link_website: "NodeAuth Home",
         link_demo: "Online Demo",
         link_license: "License Center",
         link_wiki: "Wiki Docs",
-        link_tools: "Tools",
-        url_website: "https://nodeauth.io/en",
-        url_wiki: "https://wiki.nodeauth.io/en"
+        link_tools: "Deployment Tools",
+        url_website: "https://www.nodeauth.io",
+        url_wiki: "https://wiki.nodeauth.io"
     }
 };
 
-let currentLang = localStorage.getItem('nodeauth-lang') || 
+let currentLang = localStorage.getItem('nodeauth-lang') ||
     (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
 
 // UI Logic
@@ -108,14 +108,14 @@ function showToast(message, type = 'info') {
     const container = document.getElementById('toast-container');
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
-    
+
     let icon = '';
-    if(type === 'success') icon = '<svg width="18" height="18"><use href="#icon-success"/></svg>';
-    else if(type === 'error') icon = '<svg width="18" height="18"><use href="#icon-error"/></svg>';
-    
+    if (type === 'success') icon = '<svg width="18" height="18"><use href="#icon-success"/></svg>';
+    else if (type === 'error') icon = '<svg width="18" height="18"><use href="#icon-error"/></svg>';
+
     toast.innerHTML = `${icon} <span>${message}</span>`;
     container.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.animation = 'slideOut 0.3s forwards';
         setTimeout(() => toast.remove(), 300);
@@ -125,20 +125,20 @@ function showToast(message, type = 'info') {
 function switchTab(targetId) {
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     document.querySelector(`.nav-item[data-target="${targetId}"]`).classList.add('active');
-    
+
     document.querySelectorAll('.tool-section').forEach(el => el.classList.remove('active-tool'));
     document.getElementById(`tool-${targetId}`).classList.add('active-tool');
 
     // Auto-close mobile menu if open
     const sidebar = document.getElementById('mobile-sidebar');
-    if(sidebar && sidebar.classList.contains('menu-open')) {
+    if (sidebar && sidebar.classList.contains('menu-open')) {
         sidebar.classList.remove('menu-open');
     }
 }
 
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobile-sidebar');
-    if(sidebar) sidebar.classList.toggle('menu-open');
+    if (sidebar) sidebar.classList.toggle('menu-open');
 }
 
 document.querySelectorAll('.nav-item').forEach(item => {
@@ -158,7 +158,7 @@ function applyLang() {
     const dict = i18n[currentLang];
     document.documentElement.lang = currentLang;
     if (dict.page_title) document.title = dict.page_title;
-    
+
     const attrMap = {
         'data-i18n': 'innerHTML',
         'data-placeholder': 'placeholder',
@@ -176,8 +176,8 @@ function applyLang() {
 
 function updateThemeIcons(theme) {
     document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.innerHTML = theme === 'light' ? 
-            '<svg><use href="#icon-moon"/></svg>' : 
+        btn.innerHTML = theme === 'light' ?
+            '<svg><use href="#icon-moon"/></svg>' :
             '<svg><use href="#icon-sun"/></svg>';
     });
 }
@@ -231,7 +231,7 @@ function encodeHex() {
 
 function saveLicense() {
     const val = document.getElementById('aes-license').value.trim();
-    if(val) {
+    if (val) {
         localStorage.setItem('nodeauth-license', val);
         showToast(i18n[currentLang].toast_saved, 'success');
     } else {
@@ -241,7 +241,7 @@ function saveLicense() {
 
 function loadLicense() {
     const saved = localStorage.getItem('nodeauth-license');
-    if(saved) document.getElementById('aes-license').value = saved;
+    if (saved) document.getElementById('aes-license').value = saved;
 }
 
 async function encryptAES() {
@@ -250,7 +250,7 @@ async function encryptAES() {
     const targetArea = document.getElementById('aes-target').value;
     const out = document.getElementById('aes-out');
     const btn = document.getElementById('btn-encrypt');
-    
+
     if (!secretStr || !targetArea.trim()) {
         showToast(dict.err_missing, 'error');
         return;
@@ -298,7 +298,7 @@ async function encryptAES() {
         const lines = targetArea.split('\n').filter(l => l.trim() !== '');
         out.innerHTML = `<span class="placeholder-text">${dict.status_encrypting.replace('{n}', lines.length)}</span>`;
         const b64 = (buf) => btoa(String.fromCharCode(...buf));
-        
+
         const promises = lines.map(async (line) => {
             let prefix = "";
             let valToEncrypt = line.trim();
@@ -332,11 +332,11 @@ function copy(id) {
     let text = el.textContent;
     // Don't copy placeholder
     if (el.querySelector('.placeholder-text') || !text) return;
-    
+
     navigator.clipboard.writeText(text).then(() => {
         showToast(i18n[currentLang].toast_copied, 'success');
         const btn = el.closest('.output-area').querySelector('.btn-copy');
-        if(btn) {
+        if (btn) {
             btn.innerHTML = '<svg><use href="#icon-check"/></svg>';
             btn.style.color = 'var(--success)';
             setTimeout(() => {
